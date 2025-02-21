@@ -1,0 +1,24 @@
+site_name: QuickOC
+site_description: Documentación oficial de QuickOC
+site_author: Cristobal Briones
+repo_url: https://github.com/Mafriones/QuickOC.git  # Reemplázalo por tu repositorio
+
+theme:
+  name: material  # O usa el tema por defecto de MkDocs
+  palette:
+    primary: blue
+    accent: deep-purple
+
+nav:
+  - Inicio: index.md
+  - Instalación: installation.md
+  - Uso: usage.md
+  - Configuración: config.md
+  - Desarrollo: development.md
+  - API Referencia: api.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true

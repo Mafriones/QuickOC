@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# pagina de ayuda de codigos de git
+ayuda_codigos_git.txt
+
+# Pagina de ayuda de markdown
+markdown-cheat-sheet.md
