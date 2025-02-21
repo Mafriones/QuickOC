@@ -35,23 +35,65 @@ class OrdenesCompraApp:
         self.cargar_locales()
 
         # Título
-        self.label_title = tk.Label(root, text="Procesador de Ordenes de Compra", fg=COLOR_TEXTO, bg=COLOR_PANEL, font=('Arial', 18), bd=2, relief='solid')
+        self.label_title = tk.Label(root, text="Procesador de Ordenes de Compra",
+                                    fg=COLOR_TEXTO,
+                                    bg=COLOR_PANEL,
+                                    font=('Arial', 18),
+                                    bd=2,
+                                    relief='solid')
         self.label_title.pack(side=tk.TOP, fill=tk.X, pady=10)
 
         # Botones principales
-        self.btn_cargar_archivos = tk.Button(root, text="Cargar Archivos de Ordenes de Compra (.xls)", command=self.cargar_archivos, width=50, bg=COLOR_BOTON_FONDO, fg=COLOR_TEXTO, bd=3, relief='solid', highlightbackground=COLOR_BOTON_BORDE, highlightthickness=5, font=('Arial', 12))
+        self.btn_cargar_archivos = tk.Button(root, text="Cargar Archivos de Ordenes de Compra (.xls)",
+                                            command=self.cargar_archivos,
+                                            width=50,
+                                            bg=COLOR_BOTON_FONDO,
+                                            fg=COLOR_TEXTO, bd=3,
+                                            relief='solid',
+                                            highlightbackground=COLOR_BOTON_BORDE,
+                                            highlightthickness=5, font=('Arial', 12))
         self.btn_cargar_archivos.pack(pady=10)
 
         self.buttons_frame = tk.Frame(root, bg=COLOR_FONDO)
+
         self.buttons_frame.pack(pady=10)
 
-        self.btn_locales = tk.Button(self.buttons_frame, text="Locales", command=self.gestionar_locales, width=20, bg=COLOR_BOTON_FONDO, fg=COLOR_TEXTO, bd=3, relief='solid', highlightbackground=COLOR_BOTON_BORDE, highlightthickness=5, font=('Arial', 12))
+        self.btn_locales = tk.Button(self.buttons_frame, text="Locales",
+                                    command=self.gestionar_locales,
+                                    width=20,
+                                    bg=COLOR_BOTON_FONDO,
+                                    fg=COLOR_TEXTO,
+                                    bd=3,
+                                    relief='solid',
+                                    highlightbackground=COLOR_BOTON_BORDE,
+                                    highlightthickness=5,
+                                    font=('Arial', 12))
+        
         self.btn_locales.pack(side=tk.LEFT, padx=10)
 
-        self.btn_productos = tk.Button(self.buttons_frame, text="Productos", command=self.gestionar_productos, width=20, bg=COLOR_BOTON_FONDO, fg=COLOR_TEXTO, bd=3, relief='solid', highlightbackground=COLOR_BOTON_BORDE, highlightthickness=5, font=('Arial', 12))
+        self.btn_productos = tk.Button(self.buttons_frame, text="Productos",
+                                        command=self.gestionar_productos,
+                                        width=20,
+                                        bg=COLOR_BOTON_FONDO,
+                                        fg=COLOR_TEXTO,
+                                        bd=3,
+                                        relief='solid',
+                                        highlightbackground=COLOR_BOTON_BORDE,
+                                        highlightthickness=5,
+                                        font=('Arial', 12))
+        
         self.btn_productos.pack(side=tk.LEFT, padx=10)
 
-        self.btn_generar_excel = tk.Button(root, text="Generar Excel", command=self.generar_excel, width=50, bg=COLOR_BOTON_FONDO, fg=COLOR_TEXTO, bd=3, relief="solid", highlightbackground=COLOR_BOTON_BORDE, highlightthickness=5, font=('Arial', 12))
+        self.btn_generar_excel = tk.Button(root, text="Generar Excel",
+                                           command=self.generar_excel,
+                                           width=50,
+                                           bg=COLOR_BOTON_FONDO,
+                                           fg=COLOR_TEXTO,
+                                           bd=3,
+                                           relief="solid",
+                                           highlightbackground=COLOR_BOTON_BORDE,
+                                           highlightthickness=5,
+                                           font=('Arial', 12))
         self.btn_generar_excel.pack(pady=10)
 
         self.tree = None
@@ -222,7 +264,11 @@ class OrdenesCompraApp:
         str_geometria = f"{ancho_ventana}x{alto_ventana}"
         self.root.geometry(str_geometria)
 
-        self.tree = ttk.Treeview(self.root, columns=('Numero de Orden', 'Fecha Entrega', 'Fecha Producto', 'Local'), show='headings')
+        self.tree = ttk.Treeview(self.root, columns=('Numero de Orden',
+                                                    'Fecha Entrega',
+                                                    'Fecha Producto',
+                                                    'Local'),
+                                                    show='headings')
         self.tree.heading('Numero de Orden', text='Numero de Orden')
         self.tree.heading('Fecha Entrega', text='Fecha Entrega')
         self.tree.heading('Fecha Producto', text='Fecha Producto')
@@ -234,7 +280,10 @@ class OrdenesCompraApp:
         self.tree.column('Local', width=ancho_extra)
 
         for index, row in self.df.iterrows():
-            self.tree.insert('', 'end', values=(row['Numero de Orden'], row['Fecha Entrega'], row['Fecha Producto'], row['Local']))
+            self.tree.insert('', 'end', values=(row['Numero de Orden'],
+                                                row['Fecha Entrega'],
+                                                row['Fecha Producto'],
+                                                row['Local']))
 
         self.tree.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
@@ -293,9 +342,18 @@ class OrdenesCompraApp:
                             print("Orden de compra no es de Tottus")
                             # 📝 Expresión regular mejorada para detectar todos los productos
                             productos = re.findall(
-                                r"(\d{11,14})\s+([\w\s%]+?)\s+(\d{1,3}[,.\d]+)\s+(Cajas|Kilogramo|Kg)\s+[\d,]+\s+(Unid\.|Kilogramo)\s+\$(\d{1,3}(?:[.,]\d{3})*) \(Precio neto por unidad\)\s+\$(\d{1,3}(?:[.,]\d{3})*)",
-                                content
-                            )
+                                        (
+                                            r"(\d{11,14})\s+"  # Código del producto
+                                            r"([\w\s%]+?)\s+"  # Descripción del producto
+                                            r"(\d{1,3}[,.\d]+)\s+"  # Cantidad
+                                            r"(Cajas|Kilogramo|Kg)\s+"  # Unidad de cantidad
+                                            r"[\d,]+\s+"  # Separador entre cantidad y tipo de unidad
+                                            r"(Unid\.|Kilogramo)\s+"  # Tipo de unidad
+                                            r"\$(\d{1,3}(?:[.,]\d{3})*)\s+\(Precio neto por unidad\)\s+"  # Precio unitario
+                                            r"\$(\d{1,3}(?:[.,]\d{3})*)"  # Monto total
+                                        ),
+                                        content
+                                    )
                             print(f"📦 Productos encontrados: {len(productos)}")
 
                             # 📊 Agregar productos al JSON
