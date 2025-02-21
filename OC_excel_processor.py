@@ -372,32 +372,83 @@ class OrdenesCompraApp:
                             # ---- PRUEBA POR SECCIONES ----
 
                             # 📌 Ver si encuentra códigos de productos
-                            codigo_producto = re.findall(r"\d{11,14}", content_cortado)
+                            codigo_producto = re.findall(
+                                r"\d{11,14}",  # Captura códigos de productos de 11 a 14 dígitos
+                                content_cortado
+                            )
 
                             # 📌 Ver si encuentra descripciones de productos
-                            descripcion_producto = re.findall(r"\d{11,14}\s+([\w\s%.\-]+?)\s+\d{1,3}[,.\d]+(?:\s+Cajas|\s+Kilogramo|\s+Kg)", content_cortado)
+                            descripcion_producto = re.findall(
+                                (
+                                    r"\d{11,14}\s+"  # Código del producto
+                                    r"([\w\s%.\-]+?)\s+"  # Descripción del producto
+                                    r"\d{1,3}[,.\d]+(?:\s+Cajas|\s+Kilogramo|\s+Kg)"  # Cantidad seguida de la unidad
+                                ),
+                                content_cortado
+                            )
 
                             # 📌 Ver si encuentra cantidades
-                            cantidades = re.findall(r"(\d{1,3}[,.\d]+)(?=\s+(?:Cajas|Kilogramo|Kg))", content_cortado)
-                            
+                            cantidades = re.findall(
+                                (
+                                    r"(\d{1,3}[,.\d]+)"  # Cantidad (puede incluir coma o punto como separador)
+                                    r"(?=\s+(?:Cajas|Kilogramo|Kg))"  # Debe estar seguida de la unidad especificada
+                                ),
+                                content_cortado
+                            )
+
                             # 📌 Buscar un número entero entre "Cajas"/"Kilogramo" y "Unid."/"Kilogramo"
-                            cantidad_unidad = re.findall(r"(?:Cajas|Kilogramo)\s+(\d{1,3}[,.]?\d{0,3})\s+(?:Unid\.|Kilogramo)", content_cortado)
-                            # print(cantidad_unidad)
+                            cantidad_unidad = re.findall(
+                                (
+                                    r"(?:Cajas|Kilogramo)\s+"  # Debe estar precedido por "Cajas" o "Kilogramo"
+                                    r"(\d{1,3}[,.]?\d{0,3})\s+"  # Número de unidades, con o sin separador decimal
+                                    r"(?:Unid\.|Kilogramo)"  # Debe estar seguido por "Unid." o "Kilogramo"
+                                ),
+                                content_cortado
+                            )
 
                             # 📌 Ver si encuentra unidades (Cajas, Kilogramo, Kg)
-                            unidades = re.findall(r"(Cajas|Kilogramo|Kg)", content_cortado)
+                            unidades = re.findall(
+                                r"(Cajas|Kilogramo|Kg)",  # Captura cualquiera de estas unidades
+                                content_cortado
+                            )
 
                             # 📌 Ver si encuentra el tipo de unidad (Unid. o Kilogramo) antes del precio
-                            tipo_unidad = re.findall(r"(Unid\.|Kilogramo)(?=\s+\$)", content_cortado)
+                            tipo_unidad = re.findall(
+                                r"(Unid\.|Kilogramo)(?=\s+\$)",  # Busca "Unid." o "Kilogramo" justo antes de un precio
+                                content_cortado
+                            )
 
                             # 📌 Ver si encuentra precios unitarios
-                            precios_unitarios = re.findall(r"\$(\d{1,3}(?:[.,]\d{3})*)(?=\s+\(Precio lista\))", content_cortado)
+                            precios_unitarios = re.findall(
+                                (
+                                    r"\$(\d{1,3}(?:[.,]\d{3})*)"  # Precio con formato de separadores de miles
+                                    r"(?=\s+\(Precio lista\))"  # Debe estar seguido de "(Precio lista)"
+                                ),
+                                content_cortado
+                            )
 
                             # 📌 Ver si encuentra montos totales
-                            monto_total = re.findall(r"(?<!TOTAL\s)\$(\d{1,3}(?:[.,]\d{3})*)(?:\s+DESCUENTO|\s*$)", content_cortado)
+                            monto_total = re.findall(
+                                (
+                                    r"(?<!TOTAL\s)"  # Asegura que no está precedido por la palabra "TOTAL"
+                                    r"\$(\d{1,3}(?:[.,]\d{3})*)"  # Captura montos en formato correcto
+                                    r"(?:\s+DESCUENTO|\s*$)"  # Debe estar seguido de "DESCUENTO" o final de línea
+                                ),
+                                content_cortado
+                            )
 
                             # 📌 Unir todos los datos en una lista de tuplas (una por producto)
-                            productos = list(zip(codigo_producto, descripcion_producto, cantidades, unidades, tipo_unidad, precios_unitarios, monto_total, cantidad_unidad))
+                            productos = list(zip(
+                                codigo_producto,  # Código del producto
+                                descripcion_producto,  # Descripción del producto
+                                cantidades,  # Cantidad del producto
+                                unidades,  # Unidad de medida (Cajas/Kilogramo)
+                                tipo_unidad,  # Tipo de unidad (Unid./Kilogramo)
+                                precios_unitarios,  # Precio unitario
+                                monto_total,  # Monto total
+                                cantidad_unidad  # Cantidad por unidad
+                            ))
+
 
                             print(f"📦 Productos encontrados: {len(productos)}")
 
@@ -421,11 +472,13 @@ class OrdenesCompraApp:
                         for producto in productos:
 
                             # Buscar el codigo de Cedar Creek
-                            codigo_cedar = next((l["Codigo Cedar Creek"] for l in productos_json if int(l["Codigo UPC"]) == int(producto[0])), "No encontrado")
+                            codigo_cedar = next((l["Codigo Cedar Creek"] for l in productos_json if int(l["Codigo UPC"]) == int(producto[0])),
+                                                 "No encontrado")
                             # Filtro kilos escalopa
                             if producto[3] == "Kilogramo":
                                 
-                                divisor = next((l["Kgs por caja"] for l in productos_json if int(l["Codigo UPC"]) == int(producto[0])), "No encontrado")
+                                divisor = next((l["Kgs por caja"] for l in productos_json if int(l["Codigo UPC"]) == int(producto[0])),
+                                                "No encontrado")
                                 UM = next((l["UM"] for l in productos_json if int(l["Codigo UPC"]) == int(producto[0])), "No encontrado")
 
                                 if UM == "KGS":
