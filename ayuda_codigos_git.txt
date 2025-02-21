@@ -1,0 +1,61 @@
+CONFIGURACIÓN
+
+(git config --global user.name “[firstname lastname]”):
+establece un nombre identificable para el crédito al revisar el historial de versiones
+
+(git config --global user.email “[valid-email]”):
+establece una dirección de correo electrónico que se asociará con cada marca en el historial
+
+(git config --global color.ui auto):
+activa la coloración automática en la línea de comandos de Git para facilitar la revisión
+
+
+
+CONFIGURACIÓN E INICIALIZACIÓN
+
+(git init):
+inicializa un directorio existente como un repositorio de Git
+
+(git clone [url]):
+recupera un repositorio completo desde una ubicación alojada mediante una URL
+
+
+
+PREPARACIÓN Y CAPTURA DE INSTANTÁNEAS
+
+(git status):
+muestra los archivos modificados en el directorio de trabajo, preparados para el próximo commit
+
+(git add [file]):
+añade un archivo en su estado actual a tu próximo commit (fase de preparación)
+
+(git reset [file]):
+deshace la preparación de un archivo pero mantiene los cambios en el directorio de trabajo
+
+(git diff):
+muestra las diferencias de los cambios realizados pero no preparados
+
+(git diff --staged):
+muestra las diferencias de lo que está preparado pero aún no confirmado
+
+(git commit -m “[descriptive message]”):
+confirma el contenido preparado como una nueva instantánea de commit
+
+
+
+RAMAS Y FUSIÓN
+
+(git branch):
+lista tus ramas. Un * aparecerá junto a la rama activa actualmente
+
+(git branch [branch-name]):
+crea una nueva rama en el commit actual
+
+(git checkout):
+cambia a otra rama y la carga en el directorio de trabajo
+
+(git merge [branch]):
+fusiona el historial de la rama especificada en la rama actual
+
+(git log):
+muestra todos los commits en el historial de la rama actual

@@ -1,0 +1,26 @@
+# Licencia de Uso Interno - QuickOC
+
+Copyright © 2025 EMBRIO CHILE S.A. Todos los derechos reservados.
+
+## 1. Uso Autorizado
+Este software, **QuickOC**, es propiedad exclusiva de **EMBRIO CHILE S.A.** y está destinado exclusivamente para su uso interno dentro de la organización. Solo los empleados y colaboradores autorizados de **EMBRIO CHILE S.A.** pueden utilizar, modificar y distribuir este software dentro de la empresa.
+
+## 2. Restricciones
+- **Queda estrictamente prohibida la redistribución, venta o publicación** de este software o cualquier parte de su código fuente sin el consentimiento expreso y por escrito de **EMBRIO CHILE S.A.**.
+- **No se permite el uso de este software fuera de EMBRIO CHILE S.A.** sin una licencia o acuerdo específico.
+- **Está prohibido el uso comercial por parte de terceros**, así como su integración en otros productos sin autorización previa.
+
+## 3. Modificaciones y Contribuciones
+- Los empleados de **EMBRIO CHILE S.A.** pueden modificar el código y contribuir a su desarrollo dentro del entorno empresarial.
+- Cualquier modificación o mejora realizada **debe permanecer dentro de la empresa** y **no puede ser compartida externamente** sin autorización previa.
+
+## 4. Responsabilidad
+Este software se proporciona "tal cual", sin garantías de ningún tipo, expresas o implícitas. **EMBRIO CHILE S.A.** no será responsable de ningún daño derivado del uso del software.
+
+## 5. Acceso Público del Código
+El código fuente es visible públicamente en este repositorio de GitHub **únicamente con fines de transparencia y referencia**, pero **su uso está restringido exclusivamente a empleados y colaboradores autorizados de EMBRIO CHILE S.A.**.
+
+---
+
+📌 **Si tienes dudas sobre el uso de este software, contacta con:**  
+📧 **[correo@tuempresa.com]**
