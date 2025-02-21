@@ -57,10 +57,9 @@ pyinstaller --noconsole --name "QuickOC" --add-data "locales.json;." --add-data 
 A la carpeta dist *(que es la que importa)* le agregaremos los siguientes archivos de la carpeta principal:
 1. ```gestionar_locales.py```
 2. ```gestionar_productos.py```
-3. ```procesar_archivos.py```
-4. ```locales.json```
-5. ```productos.json```
-6. ```OC_icon_v3.ico```
+3. ```locales.json```
+4. ```productos.json```
+5. ```OC_icon_v3.ico```
 
 4. El ejecutable estara en la carpeta **dist** con el nombre *QuickOC.exe*
 

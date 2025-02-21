@@ -10,7 +10,6 @@ El proyecto **QuickOC** sigue la siguiente estructura de archivos:
     ├── OC_excel_processor.py
     ├── gestionar_locales.py
     ├── gestionar_productos.py
-    ├── procesar_archivos.py
     ├── productos.json
     ├── locales.json
     ├── OC_icon_v3.ico
@@ -32,7 +31,7 @@ El proyecto **QuickOC** sigue la siguiente estructura de archivos:
 Antes de comenzar a desarrollar, asegúrate de tener el entorno configurado correctamente.
 
 ### 1️⃣ Clonar el repositorio
-Si tienes Git instalado, puedes clonar el repositorio con:
+Si tienes Git instalado *(Descargar desde [git-scm.com](https://git-scm.com/downloads))* , puedes clonar el repositorio con:
 
 ```sh
 git clone https://github.com/Mafriones/QuickOC.git
