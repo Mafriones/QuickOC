@@ -1,0 +1,7 @@
+tkinter
+pandas
+beautifulsoup4
+openpyxl
+xlrd
+json5
+pyinstaller
