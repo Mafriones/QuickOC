@@ -1,0 +1,27 @@
+[
+    {
+        "Rut": "786272106-429",
+        "Cliente": "429 - Ice Star-Avenida Amrico Vespucio 0350, Regin Metropolitana, Quilicura",
+        "Nombre Local": "HIPERMERCADOS TOTTUS S.A., TOTTUS 429 CD ICESTAR"
+    },
+    {
+        "Rut": "815376005-08",
+        "Cliente": "CD SANTIAGO LDT CARNES",
+        "Nombre Local": "9136 - UNIMARC CD LO AGUIRRE"
+    },
+    {
+        "Rut": "815376005-9052",
+        "Cliente": "CD COQUIMBO REFRIGERADOS Y CARNES",
+        "Nombre Local": "9052 - UNIMARC CD COQUIMBO"
+    },
+    {
+        "Rut": "815376005-08",
+        "Cliente": "CD SANTIAGO LDT CARNES-AVDA LO AGUIRRE 537",
+        "Nombre Local": "9136 - UNIMARC CD LO AGUIRRE"
+    },
+    {
+        "Rut": "815376005-9052",
+        "Cliente": "CD COQUIMBO REFRIGERADOS Y CARNES-PARCELA 109 A SECTOR PAN DE AZUCAR",
+        "Nombre Local": "9052 - UNIMARC CD COQUIMBO"
+    }
+]

@@ -1,0 +1,650 @@
+[
+    {
+        "Codigo Cedar Creek": "T3FASMB",
+        "Nombre del producto": "TARTARO 4% - TOTTUS - 8 BANDEJAS 500 GRS",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "07800145000575",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 4.0
+    },
+    {
+        "Codigo Cedar Creek": "T7FASMB",
+        "Nombre del producto": "MOLIDA ESPECIAL 7% - TOTTUS - 8 BANDEJAS 500 GRS",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "07800145000568",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 4.0
+    },
+    {
+        "Codigo Cedar Creek": "T1FASMB",
+        "Nombre del producto": "MOLIDA CORRIENTE 10% - TOTTUS - 8 BANDEJAS 500 GRS",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "07800145000582",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 4.0
+    },
+    {
+        "Codigo Cedar Creek": "C3BASMB",
+        "Nombre del producto": "TARTARO 4% TOTTUS 250 GR",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "07800145000650",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 2.0
+    },
+    {
+        "Codigo Cedar Creek": "C7BASMB",
+        "Nombre del producto": "CARNE MOLIDA 7% TOTTUS 250 GR",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "07800145000643",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 2.0
+    },
+    {
+        "Codigo Cedar Creek": "C1BASMB",
+        "Nombre del producto": "CARNE MOLIDA 10% TOTTUS 250 GR",
+        "Unidades por caja": "8",
+        "UM": "8",
+        "Codigo UPC": "07800145000667",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": "2.0"
+    },
+    {
+        "Codigo Cedar Creek": "BASASMB",
+        "Nombre del producto": "BISTEC DE ASIENTO MAP DAILY BEEF",
+        "Unidades por caja": 1,
+        "UM": "CTN",
+        "Codigo UPC": "02200203574317",
+        "Tipo de precio": "Carniceria Tottus",
+        "Kgs por caja": 2.1
+    },
+    {
+        "Codigo Cedar Creek": "BPNASMB",
+        "Nombre del producto": "BISTEC DE POSTA NEGRA DAILY BEEF",
+        "Unidades por caja": 1,
+        "UM": "CTN",
+        "Codigo UPC": "02200203574249",
+        "Tipo de precio": "Carniceria Tottus",
+        "Kgs por caja": 2.1
+    },
+    {
+        "Codigo Cedar Creek": "BPRASMB",
+        "Nombre del producto": "BISTEC DE POSTA ROSADA DAILY BEEF",
+        "Unidades por caja": 1,
+        "UM": "CTN",
+        "Codigo UPC": "02200203574263",
+        "Tipo de precio": "Carniceria Tottus",
+        "Kgs por caja": 2.1
+    },
+    {
+        "Codigo Cedar Creek": "ALBASMB",
+        "Nombre del producto": "ALBONDIGAS TOTTUS 8 UN. MAP",
+        "Unidades por caja": "8",
+        "UM": "8",
+        "Codigo UPC": "07800145000971",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": "3.2"
+    },
+    {
+        "Codigo Cedar Creek": "HABASMB",
+        "Nombre del producto": "HAMBURGUESA ARTESANAL 300G TOTTUS",
+        "Unidades por caja": 6,
+        "UM": "CTN",
+        "Codigo UPC": "07800145001268",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 1.8
+    },
+    {
+        "Codigo Cedar Creek": "ENBASMB",
+        "Nombre del producto": "ESCALOPA POSTA NEGRA CAT-V MAP",
+        "Unidades por caja": 1,
+        "UM": "CTN",
+        "Codigo UPC": "02200203574256",
+        "Tipo de precio": "Carniceria Tottus",
+        "Kgs por caja": 2.1
+    },
+    {
+        "Codigo Cedar Creek": "ERBASMB",
+        "Nombre del producto": "ESCALOPA POSTA ROSADA CAT-V MAP",
+        "Unidades por caja": 1,
+        "UM": "CTN",
+        "Codigo UPC": "02200203574270",
+        "Tipo de precio": "Carniceria Tottus",
+        "Kgs por caja": 2.1
+    },
+    {
+        "Codigo Cedar Creek": "EGBASMB",
+        "Nombre del producto": "ESCALOPA DE GANSO CAT-V MAP",
+        "Unidades por caja": 1,
+        "UM": "CTN",
+        "Codigo UPC": "02200203574331",
+        "Tipo de precio": "Carniceria Tottus",
+        "Kgs por caja": 2.1
+    },
+    {
+        "Codigo Cedar Creek": "ABEAVEA",
+        "Nombre del producto": "ABASTERO ESPECIAL  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347561,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "ASTAVEA",
+        "Nombre del producto": "ASIENTO TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347578,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "ACEAVEA",
+        "Nombre del producto": "ASADO CARNICERO ESPECIAL  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347585,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PPTAVEA",
+        "Nombre del producto": "POSTA PALETA TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347592,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "CHOAVEA",
+        "Nombre del producto": "CHOCLILLO  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347608,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "ENTAVEA",
+        "Nombre del producto": "ENTRANA  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347615,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "FILAVEA",
+        "Nombre del producto": "FILETE  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347622,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "GSTAVEA",
+        "Nombre del producto": "GANSO TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347639,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "HLTAVEA",
+        "Nombre del producto": "HUACHALOMO TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347653,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "LLCAVEA",
+        "Nombre del producto": "STRIP LOIN (LOMO LISO) TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347660,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "LVCAVEA",
+        "Nombre del producto": "LOMO VETADO TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347677,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PALAVEA",
+        "Nombre del producto": "PALANCA  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347684,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PGTAVEA",
+        "Nombre del producto": "POLLO GANSO TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347707,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PNTAVEA",
+        "Nombre del producto": "POSTA NEGRA TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347714,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PTGAVEA",
+        "Nombre del producto": "PUNTA GANSO  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347745,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "FLIAVEA",
+        "Nombre del producto": "FLAT IRON (PUNTA PALETA)  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347752,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PPIAVEA",
+        "Nombre del producto": "PUNTA PICANA  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347769,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "SCTAVEA",
+        "Nombre del producto": "SOBRECOSTILLA TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347776,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "FLMAVEA",
+        "Nombre del producto": "FLAP MEAT (TAPABARRIGA)  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347783,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "TPTAVEA",
+        "Nombre del producto": "TAPAPECHO TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202347790,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PLTAVEA",
+        "Nombre del producto": "PLATEADA TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202361628,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PRTAVEA",
+        "Nombre del producto": "POSTA ROSADA TROZO ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202361659,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PBAAVEA",
+        "Nombre del producto": "ENTRANA GRUESA (POLLO BARRIGA)  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202655208,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "ATTAVEA",
+        "Nombre del producto": "SHORT RIBS (ASADO DE TIRA)  ANGUS-TOTTUS V VACIO CAJA CHICA",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202655277,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PNTMVE8",
+        "Nombre del producto": "POSTA NEGRA TROZO VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202459653,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PRTMVE8",
+        "Nombre del producto": "POSTA ROSADA TROZO VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202460277,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "GSTMVE8",
+        "Nombre del producto": "GANSO TROZO VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202459332,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PGTMVE8",
+        "Nombre del producto": "POLLO GANSO TROZO VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202459646,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "ABAMVE8",
+        "Nombre del producto": "ABASTERO VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202459172,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PALMVE8",
+        "Nombre del producto": "PALANCA VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202459387,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "ACAMVE8",
+        "Nombre del producto": "ASADO CARNICERO VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202459257,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PLAMVE8",
+        "Nombre del producto": "PLATEADA VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202459516,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "SCTMVE8",
+        "Nombre del producto": "SOBRECOSTILLA TROZO VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202460901,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "HLTMVE8",
+        "Nombre del producto": "HUACHALOMO TROZO VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202459349,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "TPTMVE8",
+        "Nombre del producto": "TAPAPECHO TROZO VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202460925,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PPTMVE8",
+        "Nombre del producto": "POSTA PALETA TROZO VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202459264,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "CHOMVE8",
+        "Nombre del producto": "CHOCLILLO VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202459271,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PBAMVE8",
+        "Nombre del producto": "POLLO BARRIGA VACIO V MAINSTREAM",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200202459660,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PPIBVEA",
+        "Nombre del producto": "PUNTA PICANA ANG V VACIO",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200203097939,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "SRIBVTA",
+        "Nombre del producto": "SHORT RIBS (A. TIRA) ANG V VACIO",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": 2200203098011,
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "LVCBVEA",
+        "Nombre del producto": "LOMO VETADO TROZO ANG V VACIO",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": "2200213135843",
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "PUGBVEA",
+        "Nombre del producto": "PUNTA DE GANSO ANG V VACIO",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": "2200213135867",
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "LLCBVEA",
+        "Nombre del producto": "STRIP LOIN (LOMO LISO) ANG VACIO V",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": "2200213135881",
+        "Tipo de precio": "Precio por caja y total",
+        "Kgs por caja": 10.0
+    },
+    {
+        "Codigo Cedar Creek": "ENRASMB",
+        "Nombre del producto": "ESCALOPA POSTA NEG VAC FUNDO RIO A",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": "00000000098875",
+        "Tipo de precio": "Carniceria Unimarc",
+        "Kgs por caja": 2.3
+    },
+    {
+        "Codigo Cedar Creek": "5CFASMB",
+        "Nombre del producto": "CARNE MOLIDA CORRIENTE 10%GRASA FR",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "17800145001531",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 4.0
+    },
+    {
+        "Codigo Cedar Creek": "5TFASMB",
+        "Nombre del producto": "CARNE MOLIDA TARTARO 4% GRASA FRA",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "17800145001517",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 4.0
+    },
+    {
+        "Codigo Cedar Creek": "MERASMB",
+        "Nombre del producto": "CARNE MOL ESPEC 7% FUNDO RIO ALEGR",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "17800145001289",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 2.0
+    },
+    {
+        "Codigo Cedar Creek": "MCRASMB",
+        "Nombre del producto": "CARNE MOL CTE 10% FUNDO RIO ALEGRE",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "17800145001272",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 2.0
+    },
+    {
+        "Codigo Cedar Creek": "EGRASMB",
+        "Nombre del producto": "ESCALOPA GANSO VAC FUNDO RIO ALEGR",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": "00000000098876",
+        "Tipo de precio": "Carniceria Unimarc",
+        "Kgs por caja": 2.3
+    },
+    {
+        "Codigo Cedar Creek": "5EFASMB",
+        "Nombre del producto": "CARNE MOLIDA ESPECIAL 7% GRASA FRA",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "17800145001524",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 4.0
+    },
+    {
+        "Codigo Cedar Creek": "MTRASMB",
+        "Nombre del producto": "CARNE MOL TARTA 4% FUNDO RIO ALEGR",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "17800145001296",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 2.0
+    },
+    {
+        "Codigo Cedar Creek": "BLRASMB",
+        "Nombre del producto": "BIFE LOMO LISO VAC FUNDO RIO ALEGR",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": "00000000098877",
+        "Tipo de precio": "Carniceria Unimarc",
+        "Kgs por caja": 3.0
+    },
+    {
+        "Codigo Cedar Creek": "BVRASMB",
+        "Nombre del producto": "BIFE LOMO VETADO VAC FUNDO RIO ALE",
+        "Unidades por caja": 1,
+        "UM": "KGS",
+        "Codigo UPC": "00000000098889",
+        "Tipo de precio": "Carniceria Unimarc",
+        "Kgs por caja": 3.0
+    },
+    {
+        "Codigo Cedar Creek": "ALRASMB",
+        "Nombre del producto": "ALBONDIGAS VAC ATM FUNDO RIO ALEGR",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "17800145001234",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 2.88
+    },
+    {
+        "Codigo Cedar Creek": "AMBDSEU",
+        "Nombre del producto": "ASADO MOLIDO DAILYBEEF 400 GR",
+        "Unidades por caja": 18,
+        "UM": "CTN",
+        "Codigo UPC": "27800145001173",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 7.2
+    },
+    {
+        "Codigo Cedar Creek": "AMBDSEU",
+        "Nombre del producto": "ASADO MOLIDO DAILYBEEF 400 GR",
+        "Unidades por caja": 18,
+        "UM": "CTN",
+        "Codigo UPC": "17800145001173",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 7.2
+    },
+    {
+        "Codigo Cedar Creek": "AMBDSEU",
+        "Nombre del producto": "ASADO MOLIDO DAILYBEEF 400 GR",
+        "Unidades por caja": 18,
+        "UM": "CTN",
+        "Codigo UPC": "27800145001170",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 7.2
+    },
+    {
+        "Codigo Cedar Creek": "MMRASMB",
+        "Nombre del producto": "CARNE MOL MIX VAC FUNDO RIO ALEGRE",
+        "Unidades por caja": 8,
+        "UM": "CTN",
+        "Codigo UPC": "17800145001180",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": 1.6
+    }
+]
