@@ -1,6 +1,6 @@
 # 📖 Uso de QuickOC
 
-## :1: Descargar Ordenes de compra de **Comercio Net**
+## :one: Descargar Ordenes de compra de **Comercio Net**
 1. Ingresamos en el buscador la ```url``` de **Comercio Net**
 2. Ingresamos nuestras credenciales
 3. Seleccionamos en los campos `desde` y `hasta` el rango de fechas de las ordenes de compra que queremos ver
@@ -13,10 +13,10 @@ Para abrir la aplicacion, solo se debe hacer doble-click en el icono del archivo
 ## 3️⃣ Cargar archivos de órdenes de compra
 Haz clic en **"Cargar Archivos"** y selecciona los archivos `.xls` de las ordenes de compra descargadas de **Comercio Net**.
 
-## :4: Generar el Excel final
+## :four: Generar el Excel final
 Presiona **"Generar Excel"** y elige una ubicación para guardar el archivo.
 
-## :4: En caso de querer agregar, modificar o quitar **productos** o **locales** de las listas
+## :five: En caso de querer agregar, modificar o quitar **productos** o **locales** de las listas
 1. Habiendo ejecutado la aplicacion, en el medio de la ventana se veran dos botones, **Locales** y **Productos**
 2. Hacemos click en el boton que indique lo que queramos modificar, quitar o agregar
     1. Si queremos **Agregar** un elemento 
