@@ -65,7 +65,7 @@ El proyecto **QuickOC** sigue la siguiente estructura de archivos:
   - Si un producto se vende por `Kilogramos`, se busca la conversión a `Cajas` si es aplicable.
   - En el caso de `ESCALOPA`, se realizan ajustes según la cantidad total.
 - **Asignación de códigos Cedar Creek**:
-  - Se buscan los códigos en `productos.json` y se asignan al producto correspondiente.
+  - Se buscan los códigos en `productos.json` segun su `Codigo UPC` y se asignan al producto correspondiente.
 - **Cálculo de montos**:
   - Se extraen precios unitarios y totales, aplicando conversión si es necesario.
 
@@ -74,7 +74,6 @@ El proyecto **QuickOC** sigue la siguiente estructura de archivos:
 ## 🔗 Conexión entre Módulos
 
 - **`OC_excel_processor.py`** llama a `gestionar_locales.py` y `gestionar_productos.py` para gestionar datos.
-- **`utils.py`** proporciona funciones comunes reutilizadas en todo el código.
 - **La base de datos en `JSON`** (`locales.json` y `productos.json`) actúa como almacenamiento de información de locales y productos.
 
 ---
