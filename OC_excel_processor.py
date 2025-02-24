@@ -553,22 +553,25 @@ class OrdenesCompraApp:
                                         else:
                                             cantidad = math.trunc(cantidad)
                                         
-                                        precio_unidad = float(producto[5].replace(".", "")) * float(divisor)
-                                        precio_unidad = round(precio_unidad)
+                                        precio_unidad = float(producto[5].replace(".", "")) * float(divisor) # Multiplica el precio por kilo a la 
+                                                                                                             # Cantidad de kilos por caja
+                                        precio_unidad = round(precio_unidad) # Redondea el precio a un numero entero
 
 
                                     else:
-                                        precio_unidad = float(producto[5].replace(".", "")) * float(divisor)
+                                        precio_unidad = float(producto[5].replace(".", "")) * float(divisor) # Multiplica el precio por kilo a la 
+                                                                                                             # Cantidad de kilos por caja  
                                 else:
-                                    cantidad = float(producto[7].replace(",", "."))
-                                    cantidad = math.ceil(cantidad)
-                                    precio_unidad = float(producto[5].replace(".", "")) 
+                                    cantidad = float(producto[7].replace(",", ".")) # Reemplaza la coma con un punto para obtener el formato correcto
+                                    cantidad = math.ceil(cantidad) # Aproxima la cantidad hacia arriba
+                                    precio_unidad = float(producto[5].replace(".", "")) # Reemplaza la coma con un punto para obtener el formato correcto
 
                             else:
-                                cantidad = float(producto[2].replace(",", "."))
-                                cantidad = math.ceil(cantidad)
-                                precio_unidad = float(producto[5].replace(".", "")) 
+                                cantidad = float(producto[2].replace(",", ".")) # Reemplaza la coma con un punto para obtener el formato correcto
+                                cantidad = math.ceil(cantidad) # Aproxima la cantidad hacia arriba
+                                precio_unidad = float(producto[5].replace(".", "")) # Reemplaza la coma con un punto para obtener el formato correcto
 
+                            # Añade los productos actualizados a una lista "productos_lista" 
                             productos_lista.append({
                                 "Líneas del pedido/Producto/Referencia interna": codigo_cedar,
                                 # "Codigo": producto[0],
@@ -582,12 +585,13 @@ class OrdenesCompraApp:
                         # 📂 Generar DataFrame para exportación a Excel
                         df_productos = pd.DataFrame(productos_lista)
 
+                        # Acá se revisa el documento con los locales y se confirma que el local encontrado pertenece a los existentes
                         with open("locales.json", "r", encoding="utf-8") as file:
                             locales = json.load(file)
                         nombre_local = next((l["Nombre Local"] for l in locales if l["Cliente"] == orden_compra["Local"]), "No encontrado")
                         # print(f"Este es el nombre de local: {nombre_local}")
                         
-                        # Obtener numero de orden de compra correcto
+                        # Acá obtendo el numero de orden de compra en el formato correcto
                         N_O_C = int(orden_compra["Numero de Orden"])
                         N_O_C = str(N_O_C)[-11:]
                         N_O_C = str(N_O_C)[:10]
@@ -622,31 +626,31 @@ class OrdenesCompraApp:
         if datos:
             df_final = pd.concat(datos, ignore_index=True)
 
-            # 📝 Aplicar la eliminación de duplicados POR ORDEN DE COMPRA
+            # 📝 Aplicar la eliminación de columnas duplicadas POR ORDEN DE COMPRA
             columnas_orden = ["Cliente", "Fecha de producto", "Fecha orden", "Fecha de entrega", "Orden de compra", "Tipo Documento"]
             # Para cada orden de compra, eliminamos los valores repetidos dejando solo el primero
             df_final[columnas_orden] = df_final.groupby("Orden de compra")[columnas_orden].transform(
                 lambda x: x.mask(x.duplicated(), ""))
             
-            # 📂 Pedir ubicación para guardar el archivo
+            # 📂 Esta función abre la ventana del explorador de archivos para guardar el excel generado
             nombre_archivo = filedialog.asksaveasfilename(
                 defaultextension=".xlsx",
                 filetypes=[("Archivos Excel", "*.xlsx")],
                 title="Guardar archivo Excel"
             )
-            if nombre_archivo:
+            if nombre_archivo: # Si se genera sa un nombre al archivo, se guarda en la ubicacion especificada
                 df_final.to_excel(nombre_archivo, index=False)
                 messagebox.showinfo("Éxito", f"Archivo Excel generado: {nombre_archivo}")
             else:
                 print("⚠️ Operación cancelada, archivo no guardado.")
 
-    def gestionar_locales(self):
+    def gestionar_locales(self): # invoca la funcion Gestionar Locales
         GestionarLocales(self.root)
 
-    def gestionar_productos(self):
+    def gestionar_productos(self): # invoca la funcion Gestionar Productos
         GestionarProductos(self.root) 
 
-if __name__ == "__main__":
+if __name__ == "__main__": #Estas lineas hacen que si se corre el codigodesde esta ventana, se cree una instancia de aplicacion y empieze el programa
     root = tk.Tk()
     app = OrdenesCompraApp(root)
     root.mainloop()
