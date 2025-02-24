@@ -256,66 +256,70 @@ class OrdenesCompraApp:
             
             if match:
                 fecha_entrega = match.group(1)
-                return datetime.strptime(fecha_entrega, '%d/%m/%Y').strftime('%Y-%m-%d')
+                return datetime.strptime(fecha_entrega, '%d/%m/%Y').strftime('%Y-%m-%d') # Devuelve la fecha de entrega en el formato yyyy-mm-dd
             else:
-                print("⚠️ No se encontró 'Fecha de Entrega' en el contenido.")
+                print("⚠️ No se encontró 'Fecha de Entrega' en el contenido.") # Informa que no se encontró la fecha de entrega
                 return None
 
         except Exception as e:
-            print(f"❌ Error extrayendo 'Fecha de Entrega': {e}")
+            print(f"❌ Error extrayendo 'Fecha de Entrega': {e}") # Informa que hubo un error extrayendo la fecha de entrega
             return None
 
+    # Esta función muestra en la parte inferior de la ventana los datos numero de orden, fecha de entrega, fecha de producto y local
     def mostrar_tabla(self):
         if self.tree:
-            self.tree.destroy()
+            self.tree.destroy() # Eliminar el árbol anterior si existe
 
         # Ajuste de tamaño de la ventana automáticamente
-        local_mas_largo = max(self.df["Local"], key=len)
-        n_archivos = len(self.archivos)
-        alto_ventana = 300 + n_archivos * 20
-        ancho_ventana = 500 + round(len(local_mas_largo) * 4.5)
-        ancho_extra = ancho_ventana - 380
-        str_geometria = f"{ancho_ventana}x{alto_ventana}"
-        self.root.geometry(str_geometria)
+        local_mas_largo = max(self.df["Local"], key=len) # Encontrar el local más largo
+        n_archivos = len(self.archivos) # Contar la cantidad de archivos
+        alto_ventana = 300 + n_archivos * 20 # Calcular el alto de la ventana
+        ancho_ventana = 500 + round(len(local_mas_largo) * 4.5) # Calcular el ancho de la ventana
+        ancho_extra = ancho_ventana - 380 # Calcular el ancho extra
+        str_geometria = f"{ancho_ventana}x{alto_ventana}" # Establece el nuevo tamaó de la ventana
+        self.root.geometry(str_geometria) # Ajusta el nuevo tamaño de la ventana
 
-        self.tree = ttk.Treeview(self.root, columns=('Numero de Orden',
+        # Crear un árbol con las columnas Numero de Orden, Fecha Entrega, Fecha Producto y Local
+        self.tree = ttk.Treeview(self.root, columns=('Numero de Orden',  
                                                     'Fecha Entrega',
                                                     'Fecha Producto',
                                                     'Local'),
-                                                    show='headings')
-        self.tree.heading('Numero de Orden', text='Numero de Orden')
-        self.tree.heading('Fecha Entrega', text='Fecha Entrega')
-        self.tree.heading('Fecha Producto', text='Fecha Producto')
-        self.tree.heading('Local', text='Local')
+                                                    show='headings') 
+        self.tree.heading('Numero de Orden', text='Numero de Orden') # Encabezado de la columna Numero de Orden
+        self.tree.heading('Fecha Entrega', text='Fecha Entrega') # Encabezado de la columna Fecha Entrega 
+        self.tree.heading('Fecha Producto', text='Fecha Producto') # Encabezado de la columna Fecha Producto
+        self.tree.heading('Local', text='Local') #Encaezado de la columna Local
 
-        self.tree.column('Numero de Orden', width=140)
-        self.tree.column('Fecha Entrega', width=100)
-        self.tree.column('Fecha Producto', width=100)
-        self.tree.column('Local', width=ancho_extra)
+        self.tree.column('Numero de Orden', width=140) # Ajusta el ancho de la columna Numero de Orden
+        self.tree.column('Fecha Entrega', width=100) # Ajusta el ancho de la columna Fecha Entrega
+        self.tree.column('Fecha Producto', width=100) # Ajusta el ancho de la columna Fecha
+        self.tree.column('Local', width=ancho_extra) # Ajusta el ancho de la columna Local
 
-        for index, row in self.df.iterrows():
+        
+        for index, row in self.df.iterrows(): # Para cada fila en el DataFrame
+            # Insertar los datos en el árbol
             self.tree.insert('', 'end', values=(row['Numero de Orden'],
                                                 row['Fecha Entrega'],
                                                 row['Fecha Producto'],
                                                 row['Local']))
 
-        self.tree.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        self.tree.pack(fill=tk.BOTH, expand=True, padx=10, pady=10) # Posiciona el arbol en la ventana
 
 
         
-
+    # Esta funcion genera un archivo excel con los datos extraidos de los archivos de las ordenes de compra
     def generar_excel(self):
-        datos = []
-        for archivo in self.archivos:
-            try:
-                if self.es_archivo_html(archivo):
+        datos = [] # Crea una lista vacia para almacenar los datos
+        for archivo in self.archivos: # Para cada archivo en la lista de archivos
+            try: # Intenta hacer lo siguiente
+                if self.es_archivo_html(archivo): # Si el archivo es HTML
                     # print(f"Generando Excel a partir de HTML")
-                    with open(archivo, 'r', encoding='utf-8', errors='ignore') as file:
-                        soup = BeautifulSoup(file, 'html.parser')
+                    with open(archivo, 'r', encoding='utf-8', errors='ignore') as file: 
+                        soup = BeautifulSoup(file, 'html.parser') # Lee el archivo usando la extension BeautifulSoup
 
-                    table = soup.find('table')
-                    if table:
-                        df = pd.read_html(StringIO(str(table)))[0]
+                    table = soup.find('table') # Busca una tabla en el archivo
+                    if table: # Si encuentra una tabla
+                        df = pd.read_html(StringIO(str(table)))[0] # Lee la tabla y la guarda en un DataFrame
 
                         contenido = df.iat[0, 0]
                         # Crear json con los datos de la orden de compra
