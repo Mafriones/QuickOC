@@ -324,25 +324,37 @@ class OrdenesCompraApp:
                         contenido = df.iat[0, 0]
                         # Crear json con los datos de la orden de compra
                         orden_compra = {
-                            "Emisor": re.search(r"Emisor: (.+?) Receptor:", contenido).group(1),
+                            # 🔹 Extrae el nombre del "Emisor" ubicado entre "Emisor: " y "Receptor:"
+                            "Emisor": re.search(r"Emisor: (.+?) Receptor:", contenido).group(1), 
+
+                            # 🔹 Extrae el nombre del "Receptor" ubicado entre "Receptor:" y "Número de Orden"
                             "Receptor": re.search(r"Receptor: (.+?) Número de Orden", contenido).group(1),
+
+                            # 🔹 Extrae el "Número de Orden de Compra" que es un número entero después de "Número de Orden de Compra: "
                             "Numero de Orden": re.search(r"Número de Orden de Compra: (\d+)", contenido).group(1),
+
+                            # 🔹 Extrae la "Fecha de Generación" en formato dd/mm/yyyy después de "Fecha generación Mensaje: "
                             "Fecha Generacion": re.search(r"Fecha generación Mensaje: (\d{2}/\d{2}/\d{4})", contenido).group(1),
+
+                            # 🔹 Extrae la "Fecha de Entrega" en formato dd/mm/yyyy después de "Fecha de Entrega: "
                             "Fecha de Entrega": re.search(r"Fecha de Entrega: (\d{2}/\d{2}/\d{4})", contenido).group(1),
-                            # "Local": re.search(r"Información Comprador (.+?) Información Proveedor", contenido).group(1).strip(),
+
+                            # 🔹 Extrae el "Local" ubicado entre "Por cuenta del vendedor" e "Información Comprador"
                             "Local": re.search(r"Por cuenta del vendedor\s*(.*?)\s*Información Comprador", contenido).group(1).strip(),
+
+                            # 🔹 Lista vacía donde se almacenarán los productos extraídos más adelante
                             "Productos": []
                         }
-
                         # 📆 Calcular "Fecha de producto" (un día antes de la fecha de entrega)
-                        fecha_entrega_dt = datetime.strptime(orden_compra["Fecha de Entrega"], "%d/%m/%Y")
-                        fecha_producto_dt = fecha_entrega_dt - timedelta(days=1)
-                        fecha_entrega_arreglada = fecha_entrega_dt.strftime("%Y-%m-%d")
-                        if "CD COQUIMBO" in orden_compra["Local"]:
-                            fecha_entrega_dt = fecha_entrega_dt - timedelta(days=1)
-                            fecha_entrega_arreglada = fecha_entrega_dt.strftime("%Y-%m-%d")
-                            orden_compra["Fecha de Producto"] = fecha_entrega_arreglada
-                        elif "CD SANTIAGO LDT CARNES" in orden_compra["Local"]:
+                        fecha_entrega_dt = datetime.strptime(orden_compra["Fecha de Entrega"], "%d/%m/%Y") # convierte el texto de la fecha en un 
+                                                                                                           # formato de fecha
+                        fecha_producto_dt = fecha_entrega_dt - timedelta(days=1) # Resta un dia a la fecha de entrega
+                        fecha_entrega_arreglada = fecha_entrega_dt.strftime("%Y-%m-%d") # Convierte la fecha de entrega en el formato yyyy-mm-dd
+                        if "CD COQUIMBO" in orden_compra["Local"]: # Si el local es CD COQUIMBO
+                            fecha_entrega_dt = fecha_entrega_dt - timedelta(days=1) # Resta un dia a la fecha de entrega
+                            fecha_entrega_arreglada = fecha_entrega_dt.strftime("%Y-%m-%d") # Convierte la fecha de entrega en el formato yyyy-mm-dd
+                            orden_compra["Fecha de Producto"] = fecha_entrega_arreglada # La fecha de producto es igual a la fecha de entrega
+                        elif "CD SANTIAGO LDT CARNES" in orden_compra["Local"]: 
                             fecha_producto_dt = fecha_entrega_dt - timedelta(days=1)
                             orden_compra["Fecha de Producto"] = fecha_producto_dt.strftime("%Y-%m-%d")
                         elif "429 - Ice Star" in orden_compra["Local"]:
@@ -351,24 +363,40 @@ class OrdenesCompraApp:
 
 
                         # 📝 Cortar el contenido para buscar solo los productos
-                        if "Cargos y descuentos aplicables al documento" in contenido:
-                            contenido_cortado = contenido.split("Cargos y descuentos aplicables al documento", 1)[1]
+                        if "Cargos y descuentos aplicables al documento" in contenido: # Si encuentra el contenido
+                            contenido_cortado = contenido.split("Cargos y descuentos aplicables al documento", 1)[1] # Corta el contenido desde que
+                                                                                                                     # empiezan los productos
                         else:
                             contenido_cortado = contenido  # Si no encuentra el contenido, deja el original
 
-                        if "TOTTUS" not in orden_compra["Emisor"]:
-                            print("Orden de compra no es de Tottus")
-                            # 📝 Expresión regular mejorada para detectar todos los productos
-                            productos = re.findall(
+                        if "TOTTUS" not in orden_compra["Emisor"]: # Si el emisor no es Tottus
+                            print("Orden de compra no es de Tottus") # Informa que la orden de compra no es de Tottus
+                            productos = re.findall( # Busca los productos en el contenido
                                         (
-                                            r"(\d{11,14})\s+"  # Código del producto
-                                            r"([\w\s%]+?)\s+"  # Descripción del producto
-                                            r"(\d{1,3}[,.\d]+)\s+"  # Cantidad
-                                            r"(Cajas|Kilogramo|Kg)\s+"  # Unidad de cantidad
-                                            r"[\d,]+\s+"  # Separador entre cantidad y tipo de unidad
-                                            r"(Unid\.|Kilogramo)\s+"  # Tipo de unidad
-                                            r"\$(\d{1,3}(?:[.,]\d{3})*)\s+\(Precio neto por unidad\)\s+"  # Precio unitario
-                                            r"\$(\d{1,3}(?:[.,]\d{3})*)"  # Monto total
+                                            # Captura un código de producto de 11 a 14 dígitos seguidos.
+                                            r"(\d{11,14})\s+" 
+
+                                            # Captura la descripción del producto: letras, espacios y "%"
+                                            # (lazy match para evitar capturar más de lo necesario).
+                                            r"([\w\s%]+?)\s+" 
+
+                                            # Captura la cantidad: un número de 1 a 3 dígitos seguido de posibles separadores (",", "." o más dígitos).
+                                            r"(\d{1,3}[,.\d]+)\s+"
+
+                                            # Captura la unidad de cantidad: puede ser "Cajas", "Kilogramo" o "Kg".
+                                            r"(Cajas|Kilogramo|Kg)\s+"
+
+                                            # Captura un separador numérico intermedio: una serie de dígitos y comas antes del tipo de unidad.
+                                            r"[\d,]+\s+" 
+
+                                            # Captura el tipo de unidad: "Unid." o "Kilogramo".
+                                            r"(Unid\.|Kilogramo)\s+" 
+
+                                            # Captura el precio unitario: número precedido por "$", con formato de miles opcional.
+                                            r"\$(\d{1,3}(?:[.,]\d{3})*)\s+\(Precio neto por unidad\)\s+" 
+
+                                            # Captura el monto total: número precedido por "$", con formato de miles opcional.
+                                            r"\$(\d{1,3}(?:[.,]\d{3})*)"
                                         ),
                                         contenido
                                     )
