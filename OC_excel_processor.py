@@ -13,11 +13,11 @@ from io import StringIO
 
 # Definición de colores
 COLOR_FONDO = '#2c2c2c'  # Color de fondo oscuro
-COLOR_PANEL = '#5B75FF'  # Color azul moradito
+COLOR_PANEL = '#d75e3b'  # Color logo
 COLOR_TEXTO = '#ebf5fb'  # Texto blanco
 COLOR_BOTON_FONDO = '#000000'  # Fondo negro para los botones
 COLOR_BOTON_BORDE = '#FFD700'  # Borde dorado para los botones
-COLOR_HOVER = '#5B75FF'        # Color azul moradito para hover
+COLOR_HOVER = '#d75e3b'        # Color logo para hover
 
 class OrdenesCompraApp:
     def __init__(self, root):
@@ -26,6 +26,7 @@ class OrdenesCompraApp:
         self.root.configure(bg=COLOR_FONDO)
         self.root.geometry("500x250")
         self.root.resizable(False,False)
+        self.root.iconbitmap("OC_icon_v3.ico")  # Reemplaza con la ruta de tu archivo .ico
 
         self.locales = []
         self.archivos = []
