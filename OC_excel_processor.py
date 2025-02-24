@@ -402,7 +402,7 @@ class OrdenesCompraApp:
                                     )
                             print(f"📦 Productos encontrados: {len(productos)}")
 
-                            # 📊 Agregar productos al JSON
+                            # Aquí se agregan los datos de los productos al json de orden de compra
                             for producto in productos:
                                 orden_compra["Productos"].append({
                                     "Codigo": producto[0],
@@ -412,7 +412,7 @@ class OrdenesCompraApp:
                                     "Precio Unitario": f"${producto[5]}",
                                     "Monto Total": f"${producto[6]}",
                                 })
-                        else:
+                        else: # Si el emisor es Tottus
                             print("Orden de compra es de Tottus")
 
                             # ---- PRUEBA POR SECCIONES ----
@@ -498,7 +498,7 @@ class OrdenesCompraApp:
 
                             print(f"📦 Productos encontrados: {len(productos)}")
 
-                            # 📊 Agregar productos al JSON
+                            # Aquí se agregan los datos de los productos al json de orden de compra
                             for producto in productos:
                                 orden_compra["Productos"].append({
                                     "Codigo": producto[0],
@@ -524,15 +524,18 @@ class OrdenesCompraApp:
                             if producto[3] == "Kilogramo":
                                 
                                 divisor = next((l["Kgs por caja"] for l in productos_json if int(l["Codigo UPC"]) == int(producto[0])),
-                                                "No encontrado")
-                                UM = next((l["UM"] for l in productos_json if int(l["Codigo UPC"]) == int(producto[0])), "No encontrado")
-
-                                if UM == "KGS":
-                                    cantidad = float(producto[2].replace(",", ".")) / float(divisor)
-                                    if "ESCALOPA" in producto[1]:
+                                                "No encontrado") # Buscar el divisor de kilos por caja
+                                
+                                # Buscar la unidad de medida
+                                UM = next((l["UM"] for l in productos_json if int(l["Codigo UPC"]) == int(producto[0])), "No encontrado") 
+                                
+                                if UM == "KGS": # Si la unidad de medida es KGS
+                                    cantidad = float(producto[2].replace(",", ".")) / float(divisor) # Divide la cantidad por el divisor
+                                    if "ESCALOPA" in producto[1]: # Si el producto es escalopa
                                         
-                                        kilos = float(producto[2].replace(",", "."))
+                                        kilos = float(producto[2].replace(",", ".")) # Convierte la cantidad a kilos
 
+                                        # Acá se especifica que cantidad de unidades se agregan dependiendo de la cantidad de kilos del producto
                                         if kilos > 50  and kilos <= 100:
                                             cantidad = math.ceil(cantidad)
                                         elif kilos > 100 and kilos <= 150:
