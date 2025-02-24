@@ -100,11 +100,11 @@ Los colores y estilos de la interfaz gráfica de QuickOC están definidos en `OC
 
 ```python
 COLOR_FONDO = '#2c2c2c'  # Color de fondo oscuro
-COLOR_PANEL = '#5B75FF'  # Color azul moradito
+COLOR_PANEL = '#d75e3b'  # Color logo
 COLOR_TEXTO = '#ebf5fb'  # Texto blanco
 COLOR_BOTON_FONDO = '#000000'  # Fondo negro para los botones
 COLOR_BOTON_BORDE = '#FFD700'  # Borde dorado para los botones
-COLOR_HOVER = '#5B75FF'  # Color azul moradito para hover
+COLOR_HOVER = '#d75e3b'        # Color logo para hover
 ```
 ### 🛠️ Cómo personalizar
 Cambiar los valores hexadecimales de los colores para modificar la apariencia de la aplicación.
