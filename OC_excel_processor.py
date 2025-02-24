@@ -145,11 +145,11 @@ class OrdenesCompraApp:
             return False # Retorna falso si no encuentra '<html' o '<table' en los primeros 512 caracteres
     
     # Funcion que extrae el local desde el codigo extraido
-    def extraer_local(self, content): 
+    def extraer_local(self, contenido): 
         pattern = r"Por cuenta del vendedor\s*(.*?)\s*Información Comprador" # Patron para extraer el local entre el texto "Por cuenta del vendedor"
                                                                              # e "Información Comprador" 
         
-        match = re.search(pattern, content, re.IGNORECASE | re.DOTALL) # Busca el patron en el contenido del archivo
+        match = re.search(pattern, contenido, re.IGNORECASE | re.DOTALL) # Busca el patron en el contenido del archivo
         if match:
             print( f"📍 Lugar de entrega encontrado: {match.group(1).strip()}") # confirma que se encontró el local
             return match.group(1).strip() # Retorna el local encontrado
@@ -174,12 +174,12 @@ class OrdenesCompraApp:
                                 numero_orden_raw = str(df.iat[4, 0]) # Extrae el numero de orden de la fila 4 columna 0
                                 fecha_entrega_raw = str(df.iat[4, 4]) # Extrae la fecha de entrega de la fila 4 columna 4
                             else: # Si no tiene al menos 5 filas y 5 columnas
-                                content = df.iat[0, 0] # Extrae el contenido de la fila 0 columna 0
-                                numero_orden_raw = re.search(r'Número de Orden de Compra:\s*(\d+)', content) # Busca el numero de orden en el contenido
+                                contenido = df.iat[0, 0] # Extrae el contenido de la fila 0 columna 0
+                                numero_orden_raw = re.search(r'Número de Orden de Compra:\s*(\d+)', contenido) # Busca el numero de orden en el contenido
                                 numero_orden_raw = numero_orden_raw.group(1) if numero_orden_raw else None # Extrae el numero de orden si lo encuentra
-                                fecha_entrega_raw = re.search(r'Fecha de Entrega:\s*(\d{2}/\d{2}/\d{4})', content) # Busca la fecha de entrega en el contenido
+                                fecha_entrega_raw = re.search(r'Fecha de Entrega:\s*(\d{2}/\d{2}/\d{4})', contenido) # Busca la fecha de entrega en el contenido
                                 fecha_entrega_raw = fecha_entrega_raw.group(1) if fecha_entrega_raw else None # Extrae la fecha de entrega si la encuentra
-                                local = self.extraer_local(content) # Extrae el local del contenido
+                                local = self.extraer_local(contenido) # Extrae el local del contenido
                         else:
                             print(f"⚠️ No se encontró una tabla en {archivo}") # Informa que no se encuentra una tabla en el archivo
                             continue
@@ -226,29 +226,33 @@ class OrdenesCompraApp:
             self.mostrar_tabla() # Llama a la funcion mostrar_tabla
 
 
-    # Extraer numero de orden
+    # Funcion que extrae el numero de orden de un archivo
     def extraer_numero_orden(self, contenido):
         try:
-            match = re.search(r'BGM\+220\+(\d{10})(\d{10})', contenido)
-        
+            match = re.search(r'BGM\+220\+(\d{10})(\d{10})', contenido) # Este regex busca un patrón específico en el string contenido,
+                                                                        # con la estructura: BGM+220+XXXXXXXXXXYYYYYYYYYY
+                                                                        # BGM\+220\+ → Busca literalmente la cadena "BGM+220+".
+                                                                        # (\d{10}) → Captura un grupo de 10 dígitos (XXXXXXXXXX).
+                                                                        # (\d{10}) → Captura otro grupo de 10 dígitos (YYYYYYYYYY).
             if match:
                 numero_orden = match.group(2)  # Extract the order number
-                return numero_orden
+                return numero_orden # Devuelve el numero de orden
             else:
-                messagebox.showerror("Error", "Número de orden no encontrado en el archivo.")
+                messagebox.showerror("Error", "Número de orden no encontrado en el archivo.") # Muestra un mensaje de error si no se encuentra el
+                                                                                              # numero de orden
                 return None
 
         except Exception as e:
-            print(f"Error extracting 'Numero de Orden': {e}")
-            messagebox.showerror("Error", f"No se pudo extraer el número de orden: {e}")
+            print(f"Error extracting 'Numero de Orden': {e}") # Informa que hubo un error extrayendo el numero de orden
+            messagebox.showerror("Error", f"No se pudo extraer el número de orden: {e}") # Muestra un mensaje de error en el computador
             return None
         
-        # Extraer fecha de entrega
+    # Esta funcion extrae la fecha de entrega de un archivo
     def extraer_fecha_entrega(self, contenido):
         try:
-
             # Intentar encontrar la fecha en diferentes formatos
-            match = re.search(r'Fecha de Entrega:\s*(\d{2}/\d{2}/\d{4})', contenido)
+            match = re.search(r'Fecha de Entrega:\s*(\d{2}/\d{2}/\d{4})', contenido) # Busca la fecha de entrega en el contenido del archivo
+                                                                                     # con el formato dd/mm/yyyy 
             
             if match:
                 fecha_entrega = match.group(1)
@@ -313,16 +317,16 @@ class OrdenesCompraApp:
                     if table:
                         df = pd.read_html(StringIO(str(table)))[0]
 
-                        content = df.iat[0, 0]
+                        contenido = df.iat[0, 0]
                         # Crear json con los datos de la orden de compra
                         orden_compra = {
-                            "Emisor": re.search(r"Emisor: (.+?) Receptor:", content).group(1),
-                            "Receptor": re.search(r"Receptor: (.+?) Número de Orden", content).group(1),
-                            "Numero de Orden": re.search(r"Número de Orden de Compra: (\d+)", content).group(1),
-                            "Fecha Generacion": re.search(r"Fecha generación Mensaje: (\d{2}/\d{2}/\d{4})", content).group(1),
-                            "Fecha de Entrega": re.search(r"Fecha de Entrega: (\d{2}/\d{2}/\d{4})", content).group(1),
-                            # "Local": re.search(r"Información Comprador (.+?) Información Proveedor", content).group(1).strip(),
-                            "Local": re.search(r"Por cuenta del vendedor\s*(.*?)\s*Información Comprador", content).group(1).strip(),
+                            "Emisor": re.search(r"Emisor: (.+?) Receptor:", contenido).group(1),
+                            "Receptor": re.search(r"Receptor: (.+?) Número de Orden", contenido).group(1),
+                            "Numero de Orden": re.search(r"Número de Orden de Compra: (\d+)", contenido).group(1),
+                            "Fecha Generacion": re.search(r"Fecha generación Mensaje: (\d{2}/\d{2}/\d{4})", contenido).group(1),
+                            "Fecha de Entrega": re.search(r"Fecha de Entrega: (\d{2}/\d{2}/\d{4})", contenido).group(1),
+                            # "Local": re.search(r"Información Comprador (.+?) Información Proveedor", contenido).group(1).strip(),
+                            "Local": re.search(r"Por cuenta del vendedor\s*(.*?)\s*Información Comprador", contenido).group(1).strip(),
                             "Productos": []
                         }
 
@@ -343,10 +347,10 @@ class OrdenesCompraApp:
 
 
                         # 📝 Cortar el contenido para buscar solo los productos
-                        if "Cargos y descuentos aplicables al documento" in content:
-                            content_cortado = content.split("Cargos y descuentos aplicables al documento", 1)[1]
+                        if "Cargos y descuentos aplicables al documento" in contenido:
+                            contenido_cortado = contenido.split("Cargos y descuentos aplicables al documento", 1)[1]
                         else:
-                            content_cortado = content  # Si no encuentra el content, deja el original
+                            contenido_cortado = contenido  # Si no encuentra el contenido, deja el original
 
                         if "TOTTUS" not in orden_compra["Emisor"]:
                             print("Orden de compra no es de Tottus")
@@ -362,7 +366,7 @@ class OrdenesCompraApp:
                                             r"\$(\d{1,3}(?:[.,]\d{3})*)\s+\(Precio neto por unidad\)\s+"  # Precio unitario
                                             r"\$(\d{1,3}(?:[.,]\d{3})*)"  # Monto total
                                         ),
-                                        content
+                                        contenido
                                     )
                             print(f"📦 Productos encontrados: {len(productos)}")
 
@@ -384,7 +388,7 @@ class OrdenesCompraApp:
                             # 📌 Ver si encuentra códigos de productos
                             codigo_producto = re.findall(
                                 r"\d{11,14}",  # Captura códigos de productos de 11 a 14 dígitos
-                                content_cortado
+                                contenido_cortado
                             )
 
                             # 📌 Ver si encuentra descripciones de productos
@@ -394,7 +398,7 @@ class OrdenesCompraApp:
                                     r"([\w\s%.\-]+?)\s+"  # Descripción del producto
                                     r"\d{1,3}[,.\d]+(?:\s+Cajas|\s+Kilogramo|\s+Kg)"  # Cantidad seguida de la unidad
                                 ),
-                                content_cortado
+                                contenido_cortado
                             )
 
                             # 📌 Ver si encuentra cantidades
@@ -403,7 +407,7 @@ class OrdenesCompraApp:
                                     r"(\d{1,3}[,.\d]+)"  # Cantidad (puede incluir coma o punto como separador)
                                     r"(?=\s+(?:Cajas|Kilogramo|Kg))"  # Debe estar seguida de la unidad especificada
                                 ),
-                                content_cortado
+                                contenido_cortado
                             )
 
                             # 📌 Buscar un número entero entre "Cajas"/"Kilogramo" y "Unid."/"Kilogramo"
@@ -413,19 +417,19 @@ class OrdenesCompraApp:
                                     r"(\d{1,3}[,.]?\d{0,3})\s+"  # Número de unidades, con o sin separador decimal
                                     r"(?:Unid\.|Kilogramo)"  # Debe estar seguido por "Unid." o "Kilogramo"
                                 ),
-                                content_cortado
+                                contenido_cortado
                             )
 
                             # 📌 Ver si encuentra unidades (Cajas, Kilogramo, Kg)
                             unidades = re.findall(
                                 r"(Cajas|Kilogramo|Kg)",  # Captura cualquiera de estas unidades
-                                content_cortado
+                                contenido_cortado
                             )
 
                             # 📌 Ver si encuentra el tipo de unidad (Unid. o Kilogramo) antes del precio
                             tipo_unidad = re.findall(
                                 r"(Unid\.|Kilogramo)(?=\s+\$)",  # Busca "Unid." o "Kilogramo" justo antes de un precio
-                                content_cortado
+                                contenido_cortado
                             )
 
                             # 📌 Ver si encuentra precios unitarios
@@ -434,7 +438,7 @@ class OrdenesCompraApp:
                                     r"\$(\d{1,3}(?:[.,]\d{3})*)"  # Precio con formato de separadores de miles
                                     r"(?=\s+\(Precio lista\))"  # Debe estar seguido de "(Precio lista)"
                                 ),
-                                content_cortado
+                                contenido_cortado
                             )
 
                             # 📌 Ver si encuentra montos totales
@@ -444,7 +448,7 @@ class OrdenesCompraApp:
                                     r"\$(\d{1,3}(?:[.,]\d{3})*)"  # Captura montos en formato correcto
                                     r"(?:\s+DESCUENTO|\s*$)"  # Debe estar seguido de "DESCUENTO" o final de línea
                                 ),
-                                content_cortado
+                                contenido_cortado
                             )
 
                             # 📌 Unir todos los datos en una lista de tuplas (una por producto)
