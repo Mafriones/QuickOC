@@ -151,6 +151,13 @@ class GestionarLocales:
     def eliminar_local(self):
         seleccion = self.tree.selection()
         if seleccion:
+            # Mostrar mensaje de confirmación
+            confirmacion = messagebox.askyesno("Confirmar eliminación", "¿Estás seguro de que quieres eliminar este local?")
+            
+            if not confirmacion:
+                return  # Si el usuario elige "No", se cancela la función
+
+            # Si el usuario confirma, procede con la eliminación
             indice = self.tree.index(seleccion[0])
             self.locales.pop(indice)
             self.tree.delete(seleccion[0])
