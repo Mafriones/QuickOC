@@ -62,6 +62,7 @@ class GestionarLocales:
         ventana_ingreso.title("Agregar Local") # Escribe el titulo de la ventana
         ventana_ingreso.geometry("400x200") # Le da tamaño a la ventana
         ventana_ingreso.configure(bg='#2c2c2c') # Le pone color al fondo de la ventana 
+        ventana_ingreso.iconbitmap("OC_icon_v3.ico")  # Reemplaza con la ruta de tu archivo .ico
 
         # Etiquetas y campos de entrada
         tk.Label(ventana_ingreso, text="Rut:", bg='#2c2c2c', fg='#ffffff').grid(row=0, column=0, padx=10, pady=10) # Posiciona los campos donde se van
@@ -108,6 +109,7 @@ class GestionarLocales:
             ventana_editar.title("Modificar Local")
             ventana_editar.geometry("400x200")
             ventana_editar.configure(bg='#2c2c2c')
+            ventana_editar.iconbitmap("OC_icon_v3.ico")  # Reemplaza con la ruta de tu archivo .ico
 
             # Se crean 3 etiquetas que muestran los datos actuales para poder modificarlos
             tk.Label(ventana_editar, text="Rut:", bg='#2c2c2c', fg='#ffffff').grid(row=0, column=0, padx=10, pady=10)
