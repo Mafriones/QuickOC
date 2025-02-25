@@ -10,6 +10,7 @@ class GestionarProductos:
         self.ventana_productos.title("Gestionar Productos")
         self.ventana_productos.geometry("900x400")
         self.ventana_productos.configure(bg='#2c2c2c')
+        self.ventana_productos.iconbitmap("OC_icon_v3.ico")  # Reemplaza con la ruta de tu archivo .ico
         
         self.archivo_productos = 'productos.json'
         self.productos = []

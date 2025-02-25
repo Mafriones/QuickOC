@@ -7,6 +7,7 @@ class GestionarLocales:
     def __init__(self, root): 
         self.root = root # Crea la raiz de la App
         self.ventana_locales = tk.Toplevel(root) # Crea la ventana
+        self.ventana_locales.iconbitmap("OC_icon_v3.ico")  # Reemplaza con la ruta de tu archivo .ico
         self.ventana_locales.title("Gestionar Locales") # Titulo de la ventana
         self.ventana_locales.geometry("800x400") # Tamaño de la ventana
         self.ventana_locales.configure(bg='#2c2c2c') # color de fondo de la ventana
