@@ -96,38 +96,44 @@ class GestionarLocales:
                                                                                                                           # locales
         btn_guardar.grid(row=3, column=0, columnspan=2, pady=10) # crea una cuadricula
 
-        
 
-    def modificar_local(self):
-        seleccion = self.tree.selection()
-        if seleccion:
-            indice = self.tree.index(seleccion[0])
+    # Esta funcion permite cambiar los valores de un local que ya existe
+    def modificar_local(self): 
+        seleccion = self.tree.selection() # Selecciona un elemento de los disponibles
+        if seleccion: # Si hay un arbol
+            indice = self.tree.index(seleccion[0])  # Segun el elemento escogido, se crea una ventana con los datos a guardar
             local_actual = self.locales[indice]
             ventana_editar = tk.Toplevel(self.root)
             ventana_editar.title("Modificar Local")
             ventana_editar.geometry("400x200")
             ventana_editar.configure(bg='#2c2c2c')
 
+            # Se crean 3 etiquetas que muestran los datos actuales para poder modificarlos
             tk.Label(ventana_editar, text="Rut:", bg='#2c2c2c', fg='#ffffff').grid(row=0, column=0, padx=10, pady=10)
             tk.Label(ventana_editar, text="Cliente:", bg='#2c2c2c', fg='#ffffff').grid(row=1, column=0, padx=10, pady=10)
             tk.Label(ventana_editar, text="Nombre Local:", bg='#2c2c2c', fg='#ffffff').grid(row=2, column=0, padx=10, pady=10)
 
+            # Dentro de las etiquetas se crean campos de entrada rellenos de los datos ya existentes, permitiendo cambiarlos
             entrada_rut = tk.Entry(ventana_editar, width=30)
-            # combobox_cliente = ttk.Combobox(ventana_editar, values=["Tottus","Unimarc"], state="readonly", width=30)
             combobox_cliente = tk.Entry(ventana_editar, width=30)
             entrada_nombre = tk.Entry(ventana_editar, width=30)
+            # Posiciona las etiquetas con espaciado en los botones
             entrada_rut.grid(row=0, column=1, padx=10, pady=10)
             combobox_cliente.grid(row=1, column=1,padx=10,pady=10)
             entrada_nombre.grid(row=2, column=1, padx=10, pady=10)
-
+            # Inserta los nuevos datos donde iban los antiguos
             entrada_rut.insert(0, local_actual['Rut'])
             combobox_cliente.insert(0, local_actual['Cliente'])
             entrada_nombre.insert(0, local_actual['Nombre Local'])
 
+            # Esta funcion guarda los modificaciones hechas anteriormente, obteniendo la informacion de los campos rellenados
             def guardar_modificacion():
-                nuevo_rut = entrada_rut.get()
-                nuevo_cliente = combobox_cliente.get()
-                nuevo_nombre_local = entrada_nombre.get()
+                nuevo_rut = entrada_rut.get() # .get() obtiene los datos de las casillas rellenadas anteriormente
+                nuevo_cliente = combobox_cliente.get() # ==
+                nuevo_nombre_local = entrada_nombre.get() # ==
+
+                # Si hay un nuevo rut y nombre de local, se añade el diccionario con los datos a la variable de locales y se llama la funcion de 
+                # guardar locales
                 if nuevo_rut and nuevo_nombre_local:
                     self.locales[indice] = {'Rut': nuevo_rut, 'Cliente': nuevo_cliente, 'Nombre Local': nuevo_nombre_local}
                     self.tree.item(seleccion[0], values=(nuevo_rut, nuevo_cliente, nuevo_nombre_local))
@@ -136,10 +142,12 @@ class GestionarLocales:
                 else:
                     messagebox.showwarning("Datos incompletos", "Debe ingresar todos los datos para modificar el local.")
 
+            # Se crea el boton que llama la funcion de guardar modificacion 
             btn_guardar = tk.Button(ventana_editar, text="Guardar", command=guardar_modificacion, bg='#1f1f1f', fg='#ffffff')
             btn_guardar.grid(row=3, column=0, columnspan=2, pady=10)
 
 
+    # Esta funcion borra el local seleccionado después de que el usuario lo selecciona y presiona el boton que llama la función
     def eliminar_local(self):
         seleccion = self.tree.selection()
         if seleccion:
