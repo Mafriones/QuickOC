@@ -10,6 +10,7 @@ from gestionar_locales import GestionarLocales
 from gestionar_productos import GestionarProductos
 from bs4 import BeautifulSoup
 from io import StringIO
+from IPython.display import display
 
 # Definición de colores
 COLOR_FONDO = '#2c2c2c'  # Color de fondo oscuro
@@ -650,7 +651,7 @@ class OrdenesCompraApp:
     def gestionar_productos(self): # invoca la funcion Gestionar Productos
         GestionarProductos(self.root) 
 
-if __name__ == "__main__": #Estas lineas hacen que si se corre el codigodesde esta ventana, se cree una instancia de aplicacion y empieze el programa
-    root = tk.Tk()
-    app = OrdenesCompraApp(root)
-    root.mainloop()
+if __name__ == "__main__": #Estas lineas hacen que si se corre el codigo usand esta ventana como principal
+    root = tk.Tk() 
+    app = OrdenesCompraApp(root) # Se cree una instancia de aplicacion y empieze el programa
+    root.mainloop() # Y este se mantenga corriendo, esperando a que algo ocurra
