@@ -10,6 +10,7 @@ from gestionar_locales import GestionarLocales
 from gestionar_productos import GestionarProductos
 from bs4 import BeautifulSoup
 from io import StringIO
+from IPython.display import display
 
 # Definición de colores
 COLOR_FONDO = '#2c2c2c'  # Color de fondo oscuro
