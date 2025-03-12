@@ -602,17 +602,24 @@ class OrdenesCompraApp:
 
                         # Acá se ordenará según el orden deseado de los productos
                         orden_deseado_1 = ["T3FASMB", "T7FASMB", "T1FASMB", "C3BASMB", "C7BASMB", "C1BASMB", "ALBASMB",  "HABASMB"] 
+                        orden_deseado_2 = ["BPNASMB", "ENBASMB", "BPRASMB", "ERBASMB", "BASASMB", "EGBASMB"]
                         n_verificador = 0
+                        n_verificador_2 = 0
                         for i in range(len(df_productos_raw)):  # Itera sobre todas las filas del DataFrame
                             dato = df_productos_raw.iloc[i, df_productos_raw.columns.get_loc("Líneas del pedido/Producto/Referencia interna")]
                             if dato in orden_deseado_1:
                                 n_verificador += 1	
+                            elif dato in orden_deseado_2:
+                                n_verificador_2 += 1
                             print(dato)  # Muestra el dato de cada fila en la columna específica
                         if n_verificador == 8:
                             print("🟢 Orden 1 detectado")
                             df_productos = self.ordenar_orden(df_productos_raw, orden_deseado_1)
+                        elif n_verificador_2 == 6:
+                            print("🟢 Orden 2 detectado")
+                            df_productos = self.ordenar_orden(df_productos_raw, orden_deseado_2)
                         else:
-                            df_productos
+                            df_productos = df_productos_raw
                             print("Ningun orden detectado")
                         print('-------------------------------------------------------------------------\n')
                         display(df_productos_raw)
