@@ -306,8 +306,21 @@ class OrdenesCompraApp:
 
         self.tree.pack(fill=tk.BOTH, expand=True, padx=10, pady=10) # Posiciona el arbol en la ventana
 
+    # Esta funcion reordenará los datos de las ordenes de compra en el orden adecuado
+    def ordenar_orden(self, datos, orden_deseado):
+        # Convertir la columna en una categoría con el orden específico
+        datos["Líneas del pedido/Producto/Referencia interna"] = pd.Categorical(
+            datos["Líneas del pedido/Producto/Referencia interna"],
+            categories=orden_deseado,
+            ordered=True
+        )
 
-        
+        # Ordenar el DataFrame
+        datos_ordenados = datos.sort_values("Líneas del pedido/Producto/Referencia interna")
+
+        return datos_ordenados
+    
+
     # Esta funcion genera un archivo excel con los datos extraidos de los archivos de las ordenes de compra
     def generar_excel(self):
         datos = [] # Crea una lista vacia para almacenar los datos
@@ -584,7 +597,35 @@ class OrdenesCompraApp:
                             })
 
                         # 📂 Generar DataFrame para exportación a Excel
-                        df_productos = pd.DataFrame(productos_lista)
+                        df_productos_raw = pd.DataFrame(productos_lista)
+
+
+                        # Acá se ordenará según el orden deseado de los productos
+                        orden_deseado_1 = ["T3FASMB", "T7FASMB", "T1FASMB", "C3BASMB", "C7BASMB", "C1BASMB", "ALBASMB",  "HABASMB"] 
+                        orden_deseado_2 = ["BPNASMB", "ENBASMB", "BPRASMB", "ERBASMB", "BASASMB", "EGBASMB"]
+                        n_verificador = 0
+                        n_verificador_2 = 0
+                        for i in range(len(df_productos_raw)):  # Itera sobre todas las filas del DataFrame
+                            dato = df_productos_raw.iloc[i, df_productos_raw.columns.get_loc("Líneas del pedido/Producto/Referencia interna")]
+                            if dato in orden_deseado_1:
+                                n_verificador += 1	
+                            elif dato in orden_deseado_2:
+                                n_verificador_2 += 1
+                            print(dato)  # Muestra el dato de cada fila en la columna específica
+                        if n_verificador == 8:
+                            print("🟢 Orden 1 detectado")
+                            df_productos = self.ordenar_orden(df_productos_raw, orden_deseado_1)
+                        elif n_verificador_2 == 6:
+                            print("🟢 Orden 2 detectado")
+                            df_productos = self.ordenar_orden(df_productos_raw, orden_deseado_2)
+                        else:
+                            df_productos = df_productos_raw
+                            print("Ningun orden detectado")
+                        print('-------------------------------------------------------------------------\n')
+                        display(df_productos_raw)
+                        print('-------------------------------------------------------------------------\n')
+                        display(df_productos)
+                        print('-------------------------------------------------------------------------\n')
 
                         # Acá se revisa el documento con los locales y se confirma que el local encontrado pertenece a los existentes
                         with open("locales.json", "r", encoding="utf-8") as file:
