@@ -673,5 +673,14 @@
         "Codigo UPC": "99634",
         "Tipo de precio": "Carniceria Unimarc",
         "Kgs por caja": "2.1"
+    },
+    {
+        "Codigo Cedar Creek": "7CFASMB",
+        "Nombre del producto": "MOLIDA CORRIENTE 700 g FUNDO RIO ALEGRE",
+        "Unidades por caja": "6",
+        "UM": "CTN",
+        "Codigo UPC": "17800145001678",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": "4.2"
     }
 ]
