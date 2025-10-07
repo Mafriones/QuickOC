@@ -12,6 +12,16 @@ from bs4 import BeautifulSoup
 from io import StringIO
 from IPython.display import display
 
+def safe_print(*args, **kwargs):
+    """Imprime sin crashear si hay caracteres no soportados por la consola."""
+    try:
+        print(*args, **kwargs)
+    except UnicodeEncodeError:
+        txt = " ".join(str(a) for a in args)
+        # Reemplaza caracteres no representables por '?'
+        print(txt.encode("ascii", "replace").decode("ascii"), **{k:v for k,v in kwargs.items() if k != "file"})
+
+
 # Definición de colores
 COLOR_FONDO = '#2c2c2c'  # Color de fondo oscuro
 COLOR_PANEL = '#d75e3b'  # Color logo
