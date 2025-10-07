@@ -145,7 +145,8 @@ class GestionarProductos:
                 nuevo_producto = {'Codigo Cedar Creek': codigo_cedar_creek,
                                     'Nombre del producto': nombre_producto,
                                     'Unidades por caja': unidades_por_caja,
-                                    'UM': um, 'Codigo UPC': codigo_upc,
+                                    'UM': um,
+                                    'Codigo UPC': codigo_upc,
                                     'Tipo de precio': tipo_de_precio,
                                     'Kgs por caja': kgs_por_caja}
                 # Se inyectan en la variable de productos
@@ -237,7 +238,7 @@ class GestionarProductos:
                     self.productos[indice] = {'Codigo Cedar Creek': nuevo_codigo_cedar_creek,
                                                'Nombre del producto': nuevo_nombre_producto,
                                                'Unidades por caja': nuevo_unidades_por_caja,
-                                               'UM': nuevo_unidades_por_caja,
+                                               'UM': nuevo_um,
                                                'Codigo UPC': nuevo_codigo_upc,
                                                'Tipo de precio': nuevo_tipo_de_precio,
                                                'Kgs por caja': nuevo_kgs_por_caja}
