@@ -646,5 +646,68 @@
         "Codigo UPC": "17800145001180",
         "Tipo de precio": "Molidas Tottus y Unimarc",
         "Kgs por caja": 1.6
+    },
+    {
+        "Codigo Cedar Creek": "BPNFSMB",
+        "Nombre del producto": "BISTEC DE POSTA NEGRA FDO RIO ALEGRE\n",
+        "Unidades por caja": "1",
+        "UM": "KGS",
+        "Codigo UPC": "99635",
+        "Tipo de precio": "Carniceria Unimarc",
+        "Kgs por caja": "2.2"
+    },
+    {
+        "Codigo Cedar Creek": "BASFSMB",
+        "Nombre del producto": "BISTEC DE ASIENTO FDO RIO ALEGRE",
+        "Unidades por caja": "1",
+        "UM": "KGS",
+        "Codigo UPC": "99636",
+        "Tipo de precio": "Carniceria Unimarc",
+        "Kgs por caja": "2.2"
+    },
+    {
+        "Codigo Cedar Creek": "BLLFSMB",
+        "Nombre del producto": "BISTEC DE LOMO LISO FDO RIO ALEGRE",
+        "Unidades por caja": "1",
+        "UM": "KGS",
+        "Codigo UPC": "99634",
+        "Tipo de precio": "Carniceria Unimarc",
+        "Kgs por caja": "2.2"
+    },
+    {
+        "Codigo Cedar Creek": "7CFASMB",
+        "Nombre del producto": "MOLIDA CORRIENTE 700 g FUNDO RIO ALEGRE",
+        "Unidades por caja": "6",
+        "UM": "CTN",
+        "Codigo UPC": "17800145001678",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": "4.2"
+    },
+    {
+        "Codigo Cedar Creek": "A24ASMB",
+        "Nombre del producto": "ALBONDIGAS MIX CON SOYA 240 grs- 8 BAND",
+        "Unidades por caja": "8",
+        "UM": "CTN",
+        "Codigo UPC": "17800145001746",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": "1.92"
+    },
+    {
+        "Codigo Cedar Creek": "H24ASMB\n",
+        "Nombre del producto": "HAMBURGUESA MIX CON SOYA 240 grs - 6 BAND",
+        "Unidades por caja": "6",
+        "UM": "CTN",
+        "Codigo UPC": "17800145001753",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": "1.44"
+    },
+    {
+        "Codigo Cedar Creek": "EESASMB",
+        "Nombre del producto": "MOLIDA ECONOMICA CON SOYA 200 grs - 8 BAND",
+        "Unidades por caja": "8",
+        "UM": "CTN",
+        "Codigo UPC": "17800145001609\n",
+        "Tipo de precio": "Molidas Tottus y Unimarc",
+        "Kgs por caja": "1.6"
     }
 ]
