@@ -646,5 +646,32 @@
         "Codigo UPC": "17800145001180",
         "Tipo de precio": "Molidas Tottus y Unimarc",
         "Kgs por caja": 1.6
+    },
+    {
+        "Codigo Cedar Creek": "BPNFSMB",
+        "Nombre del producto": "BISTEC DE POSTA NEGRA FDO RIO ALEGRE\n",
+        "Unidades por caja": "1",
+        "UM": "KGS",
+        "Codigo UPC": "99635",
+        "Tipo de precio": "Carniceria Unimarc",
+        "Kgs por caja": "2.1"
+    },
+    {
+        "Codigo Cedar Creek": "BASFSMB",
+        "Nombre del producto": "BISTEC DE ASIENTO FDO RIO ALEGRE",
+        "Unidades por caja": "1",
+        "UM": "KGS",
+        "Codigo UPC": "99636",
+        "Tipo de precio": "Carniceria Unimarc",
+        "Kgs por caja": "2.1"
+    },
+    {
+        "Codigo Cedar Creek": "BLLFSMB",
+        "Nombre del producto": "BISTEC DE LOMO LISO FDO RIO ALEGRE",
+        "Unidades por caja": "1",
+        "UM": "KGS",
+        "Codigo UPC": "99634",
+        "Tipo de precio": "Carniceria Unimarc",
+        "Kgs por caja": "2.1"
     }
 ]
