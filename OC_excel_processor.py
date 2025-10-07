@@ -18,8 +18,8 @@ def safe_print(*args, **kwargs):
         print(*args, **kwargs)
     except UnicodeEncodeError:
         txt = " ".join(str(a) for a in args)
-        # Reemplaza caracteres no representables por '?'
         print(txt.encode("ascii", "replace").decode("ascii"), **{k:v for k,v in kwargs.items() if k != "file"})
+        # Reemplaza caracteres no representables por '?'
 
 
 # Definición de colores
@@ -162,7 +162,7 @@ class OrdenesCompraApp:
         
         match = re.search(pattern, contenido, re.IGNORECASE | re.DOTALL) # Busca el patron en el contenido del archivo
         if match:
-            print( f"📍 Lugar de entrega encontrado: {match.group(1).strip()}") # confirma que se encontró el local
+            safe_print( f"📍 Lugar de entrega encontrado: {match.group(1).strip()}") # confirma que se encontró el local
             return match.group(1).strip() # Retorna el local encontrado
         else:
             return "⚠️ Lugar de entrega no encontrado" # Retorna un mensaje si no se encuentra el local
@@ -173,7 +173,7 @@ class OrdenesCompraApp:
             for archivo in self.archivos: # Para cada archivo en la lista de archivos
                 try:
                     if self.es_archivo_html(archivo): # Si el archivo es HTML
-                        print(f"📄 Procesando como HTML: {archivo}") 
+                        safe_print(f"📄 Procesando como HTML: {archivo}") 
                         with open(archivo, 'r', encoding='utf-8', errors='ignore') as file: # Abre el archivo
                             soup = BeautifulSoup(file, 'html.parser') # Lee el archivo usando la extension BeautifulSoup
 
@@ -192,11 +192,11 @@ class OrdenesCompraApp:
                                 fecha_entrega_raw = fecha_entrega_raw.group(1) if fecha_entrega_raw else None # Extrae la fecha de entrega si la encuentra
                                 local = self.extraer_local(contenido) # Extrae el local del contenido
                         else:
-                            print(f"⚠️ No se encontró una tabla en {archivo}") # Informa que no se encuentra una tabla en el archivo
+                            safe_print(f"⚠️ No se encontró una tabla en {archivo}") # Informa que no se encuentra una tabla en el archivo
                             continue
                     else: # Si el archivo no es HTML
                         # Esta parte no esta totalmente desarrollada porque actualmente ComercioNet da los archivos como html
-                        print(f"📊 Procesando como Excel: {archivo}")
+                        safe_print(f"📊 Procesando como Excel: {archivo}")
                         if archivo.endswith('.xls'):
                             df = pd.read_excel(archivo, engine='xlrd')
                         else:
@@ -228,10 +228,10 @@ class OrdenesCompraApp:
                             local
                         ])
                     else:
-                        print(f"❌ Datos incompletos en el archivo: {archivo}") # Informa que los datos estan incompletos
+                        safe_print(f"❌ Datos incompletos en el archivo: {archivo}") # Informa que los datos estan incompletos
 
                 except Exception as e:
-                    print(f"❌ Error procesando {archivo}: {e}") # Informa que hubo un error procesando el archivo
+                    safe_print(f"❌ Error procesando {archivo}: {e}") # Informa que hubo un error procesando el archivo
 
             self.df = pd.DataFrame(datos, columns=['Numero de Orden', 'Fecha Entrega', 'Fecha Producto', 'Local']) # Crea un DataFrame con los datos
             self.mostrar_tabla() # Llama a la funcion mostrar_tabla
@@ -254,7 +254,7 @@ class OrdenesCompraApp:
                 return None
 
         except Exception as e:
-            print(f"Error extracting 'Numero de Orden': {e}") # Informa que hubo un error extrayendo el numero de orden
+            safe_print(f"Error extracting 'Numero de Orden': {e}") # Informa que hubo un error extrayendo el numero de orden
             messagebox.showerror("Error", f"No se pudo extraer el número de orden: {e}") # Muestra un mensaje de error en el computador
             return None
         
@@ -269,11 +269,11 @@ class OrdenesCompraApp:
                 fecha_entrega = match.group(1)
                 return datetime.strptime(fecha_entrega, '%d/%m/%Y').strftime('%Y-%m-%d') # Devuelve la fecha de entrega en el formato yyyy-mm-dd
             else:
-                print("⚠️ No se encontró 'Fecha de Entrega' en el contenido.") # Informa que no se encontró la fecha de entrega
+                safe_print("⚠️ No se encontró 'Fecha de Entrega' en el contenido.") # Informa que no se encontró la fecha de entrega
                 return None
 
         except Exception as e:
-            print(f"❌ Error extrayendo 'Fecha de Entrega': {e}") # Informa que hubo un error extrayendo la fecha de entrega
+            safe_print(f"❌ Error extrayendo 'Fecha de Entrega': {e}") # Informa que hubo un error extrayendo la fecha de entrega
             return None
 
     # Esta función muestra en la parte inferior de la ventana los datos numero de orden, fecha de entrega, fecha de producto y local
@@ -337,7 +337,7 @@ class OrdenesCompraApp:
         for archivo in self.archivos: # Para cada archivo en la lista de archivos
             try: # Intenta hacer lo siguiente
                 if self.es_archivo_html(archivo): # Si el archivo es HTML
-                    # print(f"Generando Excel a partir de HTML")
+                    # safe_print(f"Generando Excel a partir de HTML")
                     with open(archivo, 'r', encoding='utf-8', errors='ignore') as file: 
                         soup = BeautifulSoup(file, 'html.parser') # Lee el archivo usando la extension BeautifulSoup
 
@@ -394,7 +394,7 @@ class OrdenesCompraApp:
                             contenido_cortado = contenido  # Si no encuentra el contenido, deja el original
 
                         if "TOTTUS" not in orden_compra["Emisor"]: # Si el emisor no es Tottus
-                            print("Orden de compra no es de Tottus") # Informa que la orden de compra no es de Tottus
+                            safe_print("Orden de compra no es de Tottus") # Informa que la orden de compra no es de Tottus
                             productos = re.findall( # Busca los productos en el contenido
                                         (
                                             # Captura un código de producto de 11 a 14 dígitos seguidos.
@@ -424,7 +424,7 @@ class OrdenesCompraApp:
                                         ),
                                         contenido
                                     )
-                            print(f"📦 Productos encontrados: {len(productos)}")
+                            safe_print(f"📦 Productos encontrados: {len(productos)}")
 
                             # Aquí se agregan los datos de los productos al json de orden de compra
                             for producto in productos:
@@ -437,7 +437,7 @@ class OrdenesCompraApp:
                                     "Monto Total": f"${producto[6]}",
                                 })
                         else: # Si el emisor es Tottus
-                            print("Orden de compra es de Tottus")
+                            safe_print("Orden de compra es de Tottus")
 
                             # ---- PRUEBA POR SECCIONES ----
 
@@ -520,7 +520,7 @@ class OrdenesCompraApp:
                             ))
 
 
-                            print(f"📦 Productos encontrados: {len(productos)}")
+                            safe_print(f"📦 Productos encontrados: {len(productos)}")
 
                             # Aquí se agregan los datos de los productos al json de orden de compra
                             for producto in productos:
@@ -621,27 +621,27 @@ class OrdenesCompraApp:
                                 n_verificador += 1	
                             elif dato in orden_deseado_2:
                                 n_verificador_2 += 1
-                            print(dato)  # Muestra el dato de cada fila en la columna específica
+                            safe_print(dato)  # Muestra el dato de cada fila en la columna específica
                         if n_verificador == 8:
-                            print("🟢 Orden 1 detectado")
+                            safe_print("🟢 Orden 1 detectado")
                             df_productos = self.ordenar_orden(df_productos_raw, orden_deseado_1)
                         elif n_verificador_2 == 6:
-                            print("🟢 Orden 2 detectado")
+                            safe_print("🟢 Orden 2 detectado")
                             df_productos = self.ordenar_orden(df_productos_raw, orden_deseado_2)
                         else:
                             df_productos = df_productos_raw
-                            print("Ningun orden detectado")
-                        print('-------------------------------------------------------------------------\n')
+                            safe_print("Ningun orden detectado")
+                        safe_print('-------------------------------------------------------------------------\n')
                         display(df_productos_raw)
-                        print('-------------------------------------------------------------------------\n')
+                        safe_print('-------------------------------------------------------------------------\n')
                         display(df_productos)
-                        print('-------------------------------------------------------------------------\n')
+                        safe_print('-------------------------------------------------------------------------\n')
 
                         # Acá se revisa el documento con los locales y se confirma que el local encontrado pertenece a los existentes
                         with open("locales.json", "r", encoding="utf-8") as file:
                             locales = json.load(file)
                         nombre_local = next((l["Nombre Local"] for l in locales if l["Cliente"] == orden_compra["Local"]), "No encontrado")
-                        # print(f"Este es el nombre de local: {nombre_local}")
+                        # safe_print(f"Este es el nombre de local: {nombre_local}")
                         
                         # Acá obtendo el numero de orden de compra en el formato correcto
                         N_O_C = int(orden_compra["Numero de Orden"])
@@ -662,17 +662,17 @@ class OrdenesCompraApp:
                         # display(df_productos)
                         
                         datos.append(df_productos)
-                        print("✅ Datos guardados en DataFrame")
+                        safe_print("✅ Datos guardados en DataFrame")
                         #messagebox.showinfo("Exito", "Datos guardados en DataFrame")
 
                     else:
-                        print(f"⚠️ No se encontró una tabla en {archivo}")
+                        safe_print(f"⚠️ No se encontró una tabla en {archivo}")
                         continue
                 else:
-                    print(f"❌ El archivo actual no es un HTML")
+                    safe_print(f"❌ El archivo actual no es un HTML")
 
             except Exception as e:
-                print(f"❌ Error procesando {archivo}: {e}")
+                safe_print(f"❌ Error procesando {archivo}: {e}")
 
         # 📑 Guardar los datos en un archivo Excel
         if datos:
@@ -694,7 +694,7 @@ class OrdenesCompraApp:
                 df_final.to_excel(nombre_archivo, index=False)
                 messagebox.showinfo("Éxito", f"Archivo Excel generado: {nombre_archivo}")
             else:
-                print("⚠️ Operación cancelada, archivo no guardado.")
+                safe_print("⚠️ Operación cancelada, archivo no guardado.")
 
     def gestionar_locales(self): # invoca la funcion Gestionar Locales
         GestionarLocales(self.root)
