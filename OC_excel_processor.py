@@ -18,8 +18,8 @@ def safe_print(*args, **kwargs):
         print(*args, **kwargs)
     except UnicodeEncodeError:
         txt = " ".join(str(a) for a in args)
-        # Reemplaza caracteres no representables por '?'
         print(txt.encode("ascii", "replace").decode("ascii"), **{k:v for k,v in kwargs.items() if k != "file"})
+        # Reemplaza caracteres no representables por '?'
 
 
 # Definición de colores
